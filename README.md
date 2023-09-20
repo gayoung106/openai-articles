@@ -51,3 +51,8 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 npm install react-redux
 ```
+
+### 공식문서
+
+https://ko.vitejs.dev/guide/
+https://tailwindcss.com/docs/guides/vite
