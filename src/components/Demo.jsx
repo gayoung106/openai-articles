@@ -119,7 +119,7 @@ const Demo = () => {
           <img src={loader} alt="loader" className="w-20 h-20 object-contain" />
         ) : error ? (
           <p className="font-inter font-bold text-black text-center">
-            기사를 요약하는 중입니다...
+            올바른 기사의 url을 입력해주세요.
             <br />
             <span className="font-satoshi font-normal text-gray-700">
               {error?.data?.error}
