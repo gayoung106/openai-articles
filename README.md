@@ -2,6 +2,10 @@
 
 # OpenAI API를 활용한 기사 요약 프로그램 만들기
 
+## Demo
+
+summarizer-gazero.netlify.app
+
 ## stack
 
 - React + Vite

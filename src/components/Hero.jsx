@@ -17,11 +17,13 @@ const Hero = () => {
       <h1 className="head_text">
         Summarize Articles with
         <br className="max-md:hidden" />
-        <span className="orange_gradient">OpenAI GPT</span>
+        <span className="blue_gradient"> OpenAI GPT-4</span>
       </h1>
       <h2 className="desc">
-        Simplify your reading with Summize, an open-source article summarizer
-        that transforms lengthy articles into clear and concise summaries
+        기사 url을 입력하면, OpenAI가 기사의 주요한 내용을 한 단락으로 요약해
+        줍니다.
+        <br className="max-md:hidden" />
+        <p className="text-gray-400">by. gazero</p>
       </h2>
     </header>
   );
