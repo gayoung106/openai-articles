@@ -3,12 +3,13 @@ import { copy, linkIcon, loader, tick } from "../assets";
 import { useLazyGetSummaryQuery } from "../services/article";
 
 const Demo = () => {
-  const [article, setArtticle] = useState({
+  const [article, setArticle] = useState({
     url: "",
     summary: "",
   });
 
   const [allArticles, setAllArticles] = useState([]);
+  const [copied, setCopied] = useState("");
 
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
 
@@ -31,12 +32,19 @@ const Demo = () => {
       const newArticle = { ...article, summary: data.summary };
       const updatedAllArticles = [newArticle, ...allArticles];
 
-      setArtticle(newArticle);
+      setArticle(newArticle);
       setAllArticles(updatedAllArticles);
 
       localStorage.setItem("articles", JSON.stringify(updatedAllArticles));
     }
   };
+
+  const handleCopy = (copyUrl) => {
+    setCopied(copyUrl);
+    navigator.clipboard.writeText(copyUrl);
+    setTimeout(() => setCopied(false), 3000);
+  };
+
   return (
     <section className="mt-16 w-full max-w-xl">
       <div className="flex flex-col w-full gap-2">
@@ -50,7 +58,7 @@ const Demo = () => {
             type="url"
             placeholder="URL을 입력하세요."
             value={article.url}
-            onChange={(e) => setArtticle({ ...article, url: e.target.value })}
+            onChange={(e) => setArticle({ ...article, url: e.target.value })}
             required
             className="url_input peer"
           />
@@ -61,26 +69,26 @@ const Demo = () => {
             <p>↵</p>
           </button>
         </form>
-        {/* Browse URL history */}
+        {/* Browse History */}
         <div className="flex flex-col gap-1 max-h-60 overflow-y-auto">
-          {allArticles.map((item, index) => {
+          {allArticles.reverse().map((item, index) => (
             <div
               key={`link-${index}`}
-              onClick={() => setArtticle(item)}
+              onClick={() => setArticle(item)}
               className="link_card"
             >
-              <div className="copy_btn">
+              <div className="copy_btn" onClick={() => handleCopy(item.url)}>
                 <img
-                  src={copy}
-                  alt="copy_icon"
+                  src={copied === item.url ? tick : copy}
+                  alt={copied === item.url ? "tick_icon" : "copy_icon"}
                   className="w-[40%] h-[40%] object-contain"
                 />
               </div>
               <p className="flex-1 font-satoshi text-blue-700 font-medium text-sm truncate">
                 {item.url}
               </p>
-            </div>;
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>
