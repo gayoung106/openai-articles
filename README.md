@@ -13,6 +13,8 @@ Currently, two official plugins are available:
 npm create vite@latest
 ```
 
+![iShot_2023-09-20_16 00 19](https://github.com/gayoung106/openai-articles/assets/98731537/d78f3c36-a796-4774-a50e-7efa268468f8)
+
 ### library
 
 ```
@@ -21,4 +23,5 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 
 ```
+
 # openai-articles
